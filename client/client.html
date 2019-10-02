@@ -7,7 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
 
-    const witchArray = [1, 1, 1, 1, 1, 1]; 
+    let witchArray = [0, 0, 0, 0, 0, 0]; 
 
     //parses through xhr response if there is one and adds contents to the webpage
     const parseJSON = (xhr, content) => {
@@ -104,7 +104,7 @@
     };
 
     const getUsers = (e, form) =>{
-      const url = form.querySelector('#urlField').value;
+      const url = form.querySelector('#witchList').value;
 
       const method = form.querySelector('#methodSelect').value;
 
@@ -132,6 +132,12 @@
 
     };
 
+    function changeArray(index, value){
+      if(index < witchArray.length && index >=0){
+        witchArray[index] = value;
+      }
+    }
+
     //init function
     const init = () => {
       //getting page stuffs    
@@ -144,8 +150,20 @@
       const getUser = (e) => getUsers(e, formRequest);
 
       //attach submit event (for clicking submit or hitting enter)
-      nameForm.addEventListener('submit', addUser);
+      form.addEventListener('submit', addUser);
       formRequest.addEventListener('submit', getUser);
+
+      //adding ALL THE EVENT LISTENERS (all of them)
+      const traits = document.querySelectorAll('#trait');
+
+      for(let i = 0; i< traits.length; i++){
+        let images = traits[i].children;
+        for(let j=0; j<images.length; j++){
+          images[j].addEventListener('click', function(){
+            changeArray(i, j); 
+          }, false);
+        }
+      }
 
     };
 
@@ -244,6 +262,9 @@
             </select>
             <input type="submit" id="getUser" value="Fetch Witch" />
         </form>
+    </div>
+
+    <div id="content">
     </div>
     
 

@@ -69,7 +69,6 @@ const addUser = (request, response, body) => {
   // add or update fields for this user name
   users[body.name].name = body.name;
   users[body.name].witch = body.witch;
-  console.dir(users[body.name].witch);
 
   // if response is created, then set our created message
   // and sent response with a message
