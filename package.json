@@ -6,12 +6,14 @@
   "scripts": {
     "start": "node ./src/server.js",
     "pretest": "eslint ./src --fix",
-    "test": "echo \"Tests complete\""
+    "test": "echo \"Tests complete\"",
+    "nodemon": "nodemon -e js,html,css --watch ./src --watch ./hosted ./src/server.js"
   },
   "devDependencies": {
     "eslint": "^3.0.0",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.10.1"
+    "eslint-plugin-import": "^1.10.1",
+    "nodemon": "^1.12.1"
   },
   "author": "Emily Turner",
   "license": "UNLICENSED"

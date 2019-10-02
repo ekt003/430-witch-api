@@ -6,6 +6,7 @@ const query = require('querystring');
 // pull in our custom files
 const htmlHandler = require('./htmlHandler.js');
 const jsonHandler = require('./dataHandler.js');
+const imgHandler = require('./imageHandler.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
@@ -57,6 +58,10 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getIndex(request, response);
   } else if (parsedUrl.pathname === '/style.css') {
     htmlHandler.getStyle(request, response);
+  } else if (parsedUrl.pathname === '/media/background.jpg'){
+    imgHandler.getBackground(request, response);
+  } else if(parsedUrl.pathname === '/media/placeholder.png'){
+    imgHandler.getImage(request, response, 'placeholder.png');
   } else if (parsedUrl.pathname === '/getUsers') {
     if (request.method === 'GET') {
       jsonHandler.getUsers(request, response);

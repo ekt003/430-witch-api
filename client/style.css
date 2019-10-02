@@ -14,7 +14,7 @@ body{
   height: 100vh;
   /* background image code from: https://www.w3schools.com/cssref/pr_background-image.asp
   bc I always forget how to do it */
-  background-image: url("../media/background.jpg");
+  background-image: url("/media/background.jpg");
   /*Photo by freestocks.org on Unsplash, free to use share or modify*/
   background-position: center;
   background-repeat: no-repeat;
@@ -79,7 +79,7 @@ body{
 }
 
 #trait img{
-  margin: 10px 3px;
+  margin: 10px 1%;
   width: 70px;
   height: 70px;
 }

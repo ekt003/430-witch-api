@@ -42,14 +42,14 @@ const notFound = (request, response) => {
 const addUser = (request, response, body) => {
   // default json message
   const responseJSON = {
-    message: 'Name and age are both required.',
+    message: 'Name is required required.',
   };
 
   // check to make sure we have both fields
   // We might want more validation than just checking if they exist
   // This could easily be abused with invalid types (such as booleans, numbers, etc)
   // If either are missing, send back an error message as a 400 badRequest
-  if (!body.name || !body.age) {
+  if (!body.name) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -59,7 +59,7 @@ const addUser = (request, response, body) => {
 
   // if that user's name already exists in our object
   // then switch to a 204 updated status
-  if (users[body.name]) {
+  if (users[body.name]) { //TO BE SWITCHED WITH A RECURSIVE NUMBERING FUNCTION
     responseCode = 204;
   } else {
     // otherwise create an object with that name
@@ -68,12 +68,15 @@ const addUser = (request, response, body) => {
 
   // add or update fields for this user name
   users[body.name].name = body.name;
-  users[body.name].age = body.age;
+  users[body.name].witch = body.witch;
+  console.dir(users[body.name].witch);
 
   // if response is created, then set our created message
   // and sent response with a message
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully';
+    responseJSON.name = body.name;
+    responseJSON.witch = body.witch;
     return respondJSON(request, response, responseCode, responseJSON);
   }
   // 204 has an empty payload, just a success

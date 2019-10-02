@@ -7,6 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script type="text/babel">
 
+    const witchArray = [1, 1, 1, 1, 1, 1]; 
+
     //parses through xhr response if there is one and adds contents to the webpage
     const parseJSON = (xhr, content) => {
       if(xhr.response){
@@ -65,7 +67,6 @@
       
       //grab the form's name and age fields so we can check user input
       const nameField = userForm.querySelector('#nameField');
-      const ageField = userForm.querySelector('#ageField');
 
       //build our x-www-form-urlencoded format. Without ajax the 
       //browser would do this automatically but it forcefully changes pages
@@ -76,7 +77,7 @@
       //So ours might look like  name=test&age=22
       //Again the 'name' fields in the form are the variable names in the string
       //and the variable names the server will look for.
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
+      const formData = `name=${nameField.value}&witch=${witchArray}`;
       
       //create a new Ajax request (remember this is asynchronous)
       const xhr = new XMLHttpRequest();
@@ -134,7 +135,7 @@
     //init function
     const init = () => {
       //getting page stuffs    
-      const form = document.querySelector('#nameForm');
+      const form = document.querySelector('#witchForm');
       const formRequest = document.querySelector('#userForm');
 
       //create handler
@@ -164,64 +165,64 @@
         </div>
         <div id="traits">
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
             <div id="trait">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
-                <img src="../media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
+                <img src="/media/placeholder.png" alt="placeholder">
             </div>
         </div>
     </div>
