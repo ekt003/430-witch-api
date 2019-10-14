@@ -9,6 +9,8 @@
 
     let witchArray = [0, 0, 0, 0, 0, 0]; 
 
+    let nameWitch = "";
+
     function setOptions(xhr){
       const jsonObj = JSON.parse(xhr.response);
 
@@ -37,12 +39,24 @@
         //POST response
         if(obj.message) {
           content.innerHTML += `<p>POST:${obj.message}</p>`;
-        } else{ //GET RESPONSE
-          content.innerHTML += `<p>GET:${xhr.response}</p>`;
-          setOptions(xhr);
+        } else if(obj.witch){ //GET RESPONSE
+          let newArr = obj.witch.witch.split(',');
 
-          
+          for(let i=0; i<newArr.length; i++){
+            newArr[i] = parseInt(newArr[i],10);
+          }
+
+          witchArray = newArr.slice(0);
+
+          let canvas = document.querySelector('canvas');
+          let ctx = canvas.getContext("2d");
+
+          drawCanvas(ctx, canvas);
+
         }
+
+        setOptions(xhr);
+
       }
            
     };
@@ -55,10 +69,10 @@
       //check the status code
       switch(xhr.status) {
         case 200: //success
-          content.innerHTML = `<b>The ritual is complete.</b>`;
+          content.innerHTML = `<b>The ritual is complete. The witches have been summoned. If you would like to see one, select their name from the drop down. If there are none there, then you must create the first witch.</b>`;
           break;
         case 201: //created
-          content.innerHTML = '<b>A new witch rises.</b>';
+          content.innerHTML = '<b>A new witch rises. Select Load to summon her.</b>';
           break;
         case 204: //updated (no response back from server)
           content.innerHTML = '<b>An old witch has learned new tricks.</b>';
@@ -84,16 +98,10 @@
     //function to send our post request
     const sendPost = (e, userForm) => {
       const nameAction = userForm.getAttribute('action');
-      const nameMethod = 'get';
-      
-      let uf = document.querySelector('#userForm');
+      const nameMethod = 'post';
 
       //grab the form's name and age fields so we can check user input
       const nameField = userForm.querySelector('#nameField');
-
-      if(nameField.value){
-        getUsers(e, uf);
-      }
 
       //build our x-www-form-urlencoded format. Without ajax the 
       //browser would do this automatically but it forcefully changes pages
@@ -130,10 +138,14 @@
       return false;
     };
 
-    
-
     const getUsers = (e, form) =>{
-      const url = '/getUsers';
+      let url = '/getUsers';
+
+      const witchSelect = form.querySelector('#witchList').value;
+
+      if(witchSelect){
+        url = `/getUsers?name=${witchSelect}`;
+      }
 
       const method = form.querySelector('#methodSelect').value;
 
@@ -144,7 +156,7 @@
       xhr.setRequestHeader('Accept', 'application/json');
 
       if(method == 'get'){
-        xhr.onload = () =>{
+        xhr.onload = () =>{        
           handleResponse(xhr, true); //if content should be included
         };
       } else{
@@ -155,7 +167,9 @@
 
       xhr.send();
 
-      e.preventDefault();
+      if(e){
+        e.preventDefault();
+      }
 
       return false;
 
@@ -266,6 +280,8 @@
 
 
       drawCanvas(ctx, canvas);
+
+      getUser();
 
     };
 

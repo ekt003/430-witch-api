@@ -29,6 +29,20 @@ const getUsers = (request, response) => {
   return respondJSON(request, response, 200, responseJSON);
 };
 
+const getWitch = (request, response, params) => {
+  let witch = '';
+
+  if (params.name) {
+    witch = users[params.name];
+  }
+
+  const responseJSON = {
+    witch,
+  };
+
+  return respondJSON(request, response, 200, responseJSON);
+};
+
 // used for not found requests, makes appropriate JSON object then returns it
 const notFound = (request, response) => {
   const responseJSON = {
@@ -88,6 +102,7 @@ const addUser = (request, response, body) => {
 // public exports
 module.exports = {
   getUsers,
+  getWitch,
   addUser,
   notFound,
   respondJSONMeta,

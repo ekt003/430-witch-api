@@ -217,6 +217,9 @@ button a:hover{
 
 #content{
   text-align: center;
+  width:60%;
+  margin:auto;
+  margin-bottom: 5%;
 }
 
 #content b{

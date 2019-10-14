@@ -83,7 +83,7 @@ const handleGet = (request, response, parsedUrl) => {
     case '/getUsers':
       if (params.name) {
         if (request.method === 'GET') {
-          jsonHandler.getUsers(request, response);
+          jsonHandler.getWitch(request, response, params);
         } else {
           // if just head, only respond with meta
           jsonHandler.respondJSONMeta(request, response, 200);
