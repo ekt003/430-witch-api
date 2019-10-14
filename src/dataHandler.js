@@ -13,7 +13,6 @@ const respondJSON = (request, response, status, object) => {
 };
 
 
-
 // function to respond without json body
 // takes request, response and status code
 const respondJSONMeta = (request, response, status) => {

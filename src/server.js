@@ -51,7 +51,7 @@ const handlePost = (request, response, parsedUrl) => {
 };
 
 const handleImage = (request, response, parsedUrl) => {
-  if (parsedUrl.pathname == '/media/background.jpg') {
+  if (parsedUrl.pathname === '/media/background.jpg') {
     imgHandler.getBackground(request, response);
   } else {
     imgHandler.getImage(request, response, parsedUrl.pathname);
@@ -81,17 +81,19 @@ const handleGet = (request, response, parsedUrl) => {
       htmlHandler.getDocs(request, response);
       break;
     case '/getUsers':
-      if(params.name){
+      if (params.name) {
         if (request.method === 'GET') {
           jsonHandler.getUsers(request, response);
         } else {
-          jsonHandler.respondJSONMeta(request, response, 200); // if just head, only respond with meta
+          // if just head, only respond with meta
+          jsonHandler.respondJSONMeta(request, response, 200);
         }
-      } else{
+      } else {
         if (request.method === 'GET') {
           jsonHandler.getUsers(request, response);
         } else {
-          jsonHandler.respondJSONMeta(request, response, 200); // if just head, only respond with meta
+          // if just head, only respond with meta
+          jsonHandler.respondJSONMeta(request, response, 200);
         }
       }
       break;
