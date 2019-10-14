@@ -12,6 +12,8 @@ const respondJSON = (request, response, status, object) => {
   response.end();
 };
 
+
+
 // function to respond without json body
 // takes request, response and status code
 const respondJSONMeta = (request, response, status) => {
@@ -59,7 +61,7 @@ const addUser = (request, response, body) => {
 
   // if that user's name already exists in our object
   // then switch to a 204 updated status
-  if (users[body.name]) { //TO BE SWITCHED WITH A RECURSIVE NUMBERING FUNCTION
+  if (users[body.name]) { // TO BE SWITCHED WITH A RECURSIVE NUMBERING FUNCTION
     responseCode = 204;
   } else {
     // otherwise create an object with that name

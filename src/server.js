@@ -50,32 +50,54 @@ const handlePost = (request, response, parsedUrl) => {
   }
 };
 
+const handleImage = (request, response, parsedUrl) => {
+  if (parsedUrl.pathname == '/media/background.jpg') {
+    imgHandler.getBackground(request, response);
+  } else {
+    imgHandler.getImage(request, response, parsedUrl.pathname);
+  }
+};
+
 // handle GET and HEAD requests,
 // if just HEAD request, then just respond with the meta, otherwise give full response
 const handleGet = (request, response, parsedUrl) => {
+  // if its an image, handle elsewhere (for cleanliness sake)
+  if (parsedUrl.pathname.indexOf('/media') !== -1) {
+    handleImage(request, response, parsedUrl);
+    return;
+  }
+
+  const params = query.parse(parsedUrl.query);
+
   // route to correct method based on url
-  if (parsedUrl.pathname === '/') {
-    htmlHandler.getIndex(request, response);
-  } else if (parsedUrl.pathname === '/style.css') {
-    htmlHandler.getStyle(request, response);
-  } else if (parsedUrl.pathname === '/media/background.jpg'){
-    imgHandler.getBackground(request, response);
-  } else if(parsedUrl.pathname === '/media/placeholder.png'){
-    imgHandler.getImage(request, response, 'placeholder.png');
-  } else if (parsedUrl.pathname === '/getUsers') {
-    if (request.method === 'GET') {
-      jsonHandler.getUsers(request, response);
-    } else {
-      jsonHandler.respondJSONMeta(request, response, 200); // if just head, only respond with meta
-    }
-  } else if (parsedUrl.pathname === '/notReal') {
-    if (request.method === 'GET') {
-      jsonHandler.notFound(request, response);
-    } else {
-      jsonHandler.respondJSONMeta(request, response, 404); // if just head, only respond with meta
-    }
-  } else {
-    jsonHandler.notFound(request, response); // if unknown, respond with 404
+  switch (parsedUrl.pathname) {
+    case '/':
+      htmlHandler.getIndex(request, response);
+      break;
+    case '/style.css':
+      htmlHandler.getStyle(request, response);
+      break;
+    case '/documentation':
+      htmlHandler.getDocs(request, response);
+      break;
+    case '/getUsers':
+      if(params.name){
+        if (request.method === 'GET') {
+          jsonHandler.getUsers(request, response);
+        } else {
+          jsonHandler.respondJSONMeta(request, response, 200); // if just head, only respond with meta
+        }
+      } else{
+        if (request.method === 'GET') {
+          jsonHandler.getUsers(request, response);
+        } else {
+          jsonHandler.respondJSONMeta(request, response, 200); // if just head, only respond with meta
+        }
+      }
+      break;
+    default:
+      jsonHandler.notFound(request, response); // if unknown, respond with 404
+      break;
   }
 };
 

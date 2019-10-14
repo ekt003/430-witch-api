@@ -55,8 +55,7 @@ body{
 #witchImage{
   width: 100%;
   min-width: 480px;
-  height:60vh;
-  min-height:480px;
+  height:480px;
   margin:auto;
   background-color: #18031f;
   border: 3px solid #cc8342;
@@ -82,6 +81,7 @@ body{
   margin: 10px 1%;
   width: 70px;
   height: 70px;
+  background-color: white;
 }
 
 #trait img:hover{
@@ -136,7 +136,7 @@ background: #8B9947;
   border: 3px solid #cc8342;
 }
 
-#userData form input[type=submit]{
+#userData form input[type=submit], button{
   background-color: #2e063a;
   color: #cc8342;
   font-size: 1.5rem;
@@ -145,7 +145,46 @@ background: #8B9947;
   border: 2px solid #cc8342;
 }
 
-#userData form input[type=submit]:hover{
+button{
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+.docs p{
+  font-size: 1.3rem;
+}
+
+.docs ul li{
+  font-size: 1.3rem;
+}
+
+button a{
+  color: #cc8342;
+  text-decoration: none;
+}
+
+button{
+  margin-left: 3%;
+}
+
+button a:hover{
+  color: #8B9947;
+}
+
+#documents{
+  width:100%;
+  margin: auto;
+  text-align: center;
+}
+
+#documents button{
+  width:20%;
+  min-width: 240px;
+  max-width: 400px;
+  margin: 2% auto;
+}
+
+#userData form input[type=submit]:hover, button:hover{
   color: #8B9947;
   border: 2px solid #8B9947;
   font-weight: bold;
@@ -167,3 +206,19 @@ background: #8B9947;
   border: 3px solid #cc8342;
 }
 
+#witch{
+  display: none;
+  text-align:center;
+}
+
+#witchExport img{
+  border: 3px solid #cc8342;
+}
+
+#content{
+  text-align: center;
+}
+
+#content b{
+  font-size: 1.5rem;
+}

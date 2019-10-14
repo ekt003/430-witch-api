@@ -10,22 +10,22 @@ const getBackground = (request, response) => {
   response.end();
 };
 
-//loads in any image with a provided name - useful for when I need to load like,,, a lotta pictures
+// loads in any image with a provided name - useful for when I need to load like,,, a lotta pictures
 const getImage = (request, response, url) => {
-    response.writeHead(200, { 'Content-Type': 'image/png' });
-    const img = fs.readFileSync(`${__dirname}/../media/${url}`);
+  response.writeHead(200, { 'Content-Type': 'image/png' });
+  const img = fs.readFileSync(`${__dirname}/..${url}`);
 
-    if(img){
-        response.write(img);
-    } else{
-        response.write(placeholder);
-    }
-  
-    response.end();
+  if (img) {
+    response.write(img);
+  } else {
+    response.write(placeholder);
+  }
+
+  response.end();
 };
 
 
 module.exports = {
-    getBackground,
-    getImage,
+  getBackground,
+  getImage,
 };
